@@ -47,6 +47,6 @@
     "cross-fetch": "^4.0.0"
   },
   "bin": {
-    "gstaccelerator-mcp": "./dist/mcp-server.js"
+    "gstaccelerator-mcp": "dist/mcp-server.js"
   }
 }
