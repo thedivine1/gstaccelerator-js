@@ -4,6 +4,7 @@ import { AuthenticationError, NotFoundError, ValidationError, RateLimitError, Se
 import { HSNClient } from './resources/hsn';
 import { SACClient } from './resources/sac';
 import { GSTINClient } from './resources/gstin';
+import { InvoiceClient } from './resources/invoice';
 
 const isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
 const fetchImpl = typeof fetch !== 'undefined' ? fetch : crossFetch;
@@ -17,6 +18,7 @@ export class GSTAccelerator {
   public hsn: HSNClient;
   public sac: SACClient;
   public gstin: GSTINClient;
+  public invoice: InvoiceClient;
 
   constructor(config: GSTAcceleratorConfig) {
     this.apiKey = config.apiKey || '';
@@ -24,9 +26,10 @@ export class GSTAccelerator {
     this.timeout = config.timeout || 30000;
     this.maxRetries = config.maxRetries ?? 3;
     
-    this.hsn = new HSNClient(this);
-    this.sac = new SACClient(this);
-    this.gstin = new GSTINClient(this);
+    this.hsn     = new HSNClient(this);
+    this.sac     = new SACClient(this);
+    this.gstin   = new GSTINClient(this);
+    this.invoice = new InvoiceClient(this);
   }
 
   async request<T>(method: string, path: string, body?: any): Promise<T> {

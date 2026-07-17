@@ -1,6 +1,6 @@
 {
   "name": "gstaccelerator",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "JavaScript client for the GST Accelerator API — India GST HSN/SAC lookup, GSTIN validation",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

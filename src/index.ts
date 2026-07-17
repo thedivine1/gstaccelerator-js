@@ -5,6 +5,8 @@ export default GSTAccelerator;
 
 export * from './types';
 export * from './errors';
+export { InvoiceClient } from './resources/invoice';
+export type { InvoiceItem, ClassifiedItem, InvoiceClassifyResult } from './resources/invoice';
 
 export const GSTAcceleratorMCPTools = [
   {
