@@ -32,7 +32,7 @@
   "homepage": "https://gstaccelerator.in",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thedivine1/gst-hsn-api.git"
+    "url": "git+https://github.com/thedivine1/gstaccelerator-js.git"
   },
   "scripts": {
     "build": "tsup"
