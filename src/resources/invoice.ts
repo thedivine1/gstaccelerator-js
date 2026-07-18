@@ -3,10 +3,12 @@ import type { GSTAccelerator } from '../client';
 export interface InvoiceItem {
   /** HSN code, e.g. "61099090" */
   hsn_code: string;
-  /** Quantity of the item */
-  quantity: number;
-  /** Unit rate / price in INR */
-  rate: number;
+  /** Quantity of the item (defaults to 1.0 if omitted) */
+  quantity?: number;
+  /** Unit rate / price in INR (must provide either rate or amount) */
+  rate?: number;
+  /** Total line amount in INR (must provide either rate or amount) */
+  amount?: number;
 }
 
 export interface ClassifiedItem {
