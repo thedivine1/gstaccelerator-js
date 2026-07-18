@@ -36,7 +36,7 @@ export class GSTAccelerator {
     const url = `${this.baseUrl}${path}`;
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.apiKey}`
+      'X-API-Key': this.apiKey
     };
 
     if (!isBrowser) {
@@ -134,8 +134,8 @@ export class GSTAccelerator {
     return this.request<string[]>('GET', `/api/v1/autocomplete?${params.toString()}`);
   }
 
-  async bulk(descriptions: string[]): Promise<any[][]> {
-    return this.request<any[][]>('POST', '/api/v1/bulk', { descriptions });
+  async bulk(descriptions: any[]): Promise<any[][]> {
+    return this.request<any[][]>('POST', '/api/v1/bulk', descriptions);
   }
 
   async health(): Promise<Record<string, unknown>> {
