@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "postinstall": "node postinstall.js",
     "prepublishOnly": "npm run build",
     "test": "jest",
     "start": "node dist/bin/mcp-server.js"

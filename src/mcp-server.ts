@@ -64,6 +64,25 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       };
     }
     
+    if (name === "sac_lookup") {
+      const code = String(args?.code);
+      const result = await gst.sac.get(code);
+      return {
+        content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
+      };
+    }
+    
+    if (name === "invoice_classify") {
+      const result = await gst.invoice.classify(
+        String(args?.seller_state),
+        String(args?.buyer_state),
+        args?.items as any
+      );
+      return {
+        content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
+      };
+    }
+    
     throw new Error(`Unknown tool: ${name}`);
   } catch (error: any) {
     return {

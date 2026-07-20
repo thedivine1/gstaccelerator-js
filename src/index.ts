@@ -44,5 +44,41 @@ export const GSTAcceleratorMCPTools = [
       },
       required: ["gstin"]
     }
+  },
+  {
+    name: "sac_lookup",
+    description: "Look up Indian GST rate for a specific SAC code",
+    input_schema: {
+      type: "object",
+      properties: {
+        code: { type: "string", description: "6-digit SAC code" }
+      },
+      required: ["code"]
+    }
+  },
+  {
+    name: "invoice_classify",
+    description: "Classify invoice line items as CGST+SGST (intrastate) or IGST (interstate)",
+    input_schema: {
+      type: "object",
+      properties: {
+        seller_state: { type: "string" },
+        buyer_state: { type: "string" },
+        items: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              hsn_code: { type: "string" },
+              quantity: { type: "number" },
+              rate: { type: "number" },
+              amount: { type: "number" }
+            },
+            required: ["hsn_code"]
+          }
+        }
+      },
+      required: ["seller_state", "buyer_state", "items"]
+    }
   }
 ];
