@@ -1,52 +1,50 @@
 {
   "name": "gstaccelerator",
   "version": "0.3.1",
-  "description": "JavaScript client for the GST Accelerator API — India GST HSN/SAC lookup, GSTIN validation",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    }
+  "description": "India GST API Client and MCP Server for AI Agents (HSN/SAC Rates)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "gstaccelerator-mcp": "./dist/bin/mcp-server.js"
   },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
-  "keywords": [
-    "gst",
-    "hsn",
-    "sac",
-    "india",
-    "tax",
-    "gstin",
-    "gst-api",
-    "invoice",
-    "compliance",
-    "fintech"
-  ],
-  "homepage": "https://gstaccelerator.in",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "jest",
+    "start": "node dist/bin/mcp-server.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thedivine1/gstaccelerator-js.git"
   },
-  "scripts": {
-    "build": "tsup"
+  "keywords": [
+    "gst",
+    "gstin",
+    "hsn",
+    "sac",
+    "mcp-server",
+    "fintech",
+    "india-tax",
+    "compliance",
+    "model-context-protocol",
+    "ai-agents"
+  ],
+  "author": "GST Accelerator <hello@gstaccelerator.in>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thedivine1/gstaccelerator-js/issues"
+  },
+  "homepage": "https://gstaccelerator.in",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "axios": "^1.6.0"
   },
   "devDependencies": {
-    "@types/node": "^26.1.1",
-    "tsup": "^8.0.0",
-    "typescript": "^5.0.0"
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0"
   },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.29.0",
-    "cross-fetch": "^4.0.0"
-  },
-  "bin": {
-    "gstaccelerator-mcp": "dist/mcp-server.js"
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
